@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Banking System</title>
+</head>
+<body>
+    <button><a href="{% url 'list' %}">Main_Page</a></button>
+    <button><a href="{% url 'cliente_create' %}">Create Client</a></button>
+    <button><a href="{% url 'conta_create' %}">Create Account</a></button>
+    <button><a href="{% url 'transacao_create' %}">Create Transaction</a></button>
+    <button><a href="{% url 'extrato_create' %}">Extract</a></button>
+    {% block content %}
+        
+    {% endblock %}
+</body>
+</html>

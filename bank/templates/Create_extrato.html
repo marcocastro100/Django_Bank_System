@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>___________________________Gerar Extrato de Conta____________________________</h3>
+{% if form %}
+<form method='POST'>{% csrf_token %}
+    <table>{{form.as_table}}</table>
+    <input type='submit' value='Generate Extract' />
+</form>
+{%else%}
+<h2>Cliente__________________________________________</h2>
+<table>
+    <thead>
+        <tr>
+            <td><b>Nome</b></td>
+            <td><b>Cpf</b></td>
+            <td><b>Nascimento</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td width='200px'>{{cliente.nome}}</td>
+            <td width='200px'>{{cliente.cpf}}</td>
+            <td width='200px'>{{cliente.nascimento}}</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Conta__________________________________________</h2>
+<table>
+    <thead>
+        <tr>
+            <td><b>Cliente</b></td>
+            <td><b>Numero</b></td>
+            <td><b>Limite</b></td>
+            <td><b>Saldo</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td width='200px'>{{conta.cliente}}</td>
+            <td width='200px'>{{conta.numero}}</td>
+            <td width='200px'>{{conta.limite}}</td>
+            <td width='200px'>{{conta.saldo}}</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Transações__________________________________________</h2>
+<table>
+    <thead>
+        <tr>
+            <td><b>Cliente</b></td>
+            <td><b>Conta</b></td>
+            <td><b>Tipo</b></td>
+            <td><b>Valor</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aux in transacoes%}
+        <tr>
+            <td width='200px'>{{aux.conta.cliente.nome}}</td>
+            <td width='200px'>{{aux.conta.numero}}</td>
+            <td width='200px'>{{aux.tipo}}</td>
+            <td width='200px'>{{aux.valor}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{%endif%}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>___________________________List of Clients____________________________</h3>
+<table>
+    <thead>
+        <tr>
+            <td><b>Nome</b></td>
+            <td><b>Cpf</b></td>
+            <td><b>Nascimento</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aux in clientes %}
+        <tr>
+            <td width='200px'>{{aux.nome}}</td>
+            <td width='200px'>{{aux.cpf}}</td>
+            <td width='200px'>{{aux.nascimento}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>___________________________List of Accounts____________________________</h3>
+<table>
+    <thead>
+        <tr>
+            <td><b>Cliente</b></td>
+            <td><b>Numero</b></td>
+            <td><b>Limite</b></td>
+            <td><b>Saldo</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aux in contas %}
+        <tr>
+            <td width='200px'>{{aux.cliente}}</td>
+            <td width='200px'>{{aux.numero}}</td>
+            <td width='200px'>{{aux.limite}}</td>
+            <td width='200px'>{{aux.saldo}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>___________________________List of Transactions____________________________</h3>
+<table>
+    <thead>
+        <tr>
+            <td><b>Cliente</b></td>
+            <td><b>Conta</b></td>
+            <td><b>Tipo</b></td>
+            <td><b>Valor</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aux in transactions%}
+        <tr>
+            <td width='200px'>{{aux.conta.cliente.nome}}</td>
+            <td width='200px'>{{aux.conta.numero}}</td>
+            <td width='200px'>{{aux.tipo}}</td>
+            <td width='200px'>{{aux.valor}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
